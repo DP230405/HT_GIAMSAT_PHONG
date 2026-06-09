@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoomGuard - Nhóm 16</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- MÀN HÌNH ĐĂNG NHẬP / ĐĂNG KÝ -->
+    <div id="manhinhdangnhap" class="man-hinh-dang-nhap dang-hien">
+        <div class="hop-dang-nhap glass-panel">
+            <img src="img/logo.png" class="logo-dang-nhap" alt="logo hcmute">
+
+            <h1>Nhóm 16</h1>
+            <p class="mo-ta-dang-nhap">Hệ thống giám sát phòng thông minh</p>
+
+            <div class="nut-chuyen-form">
+                <button id="nutdangnhap" class="dang-chon" type="button">Đăng nhập</button>
+                <button id="nutdangky" type="button">Đăng ký</button>
+            </div>
+
+            <form id="formdangnhap" class="form-tai-khoan">
+                <div class="o-nhap">
+                    <i class='bx bx-envelope'></i>
+                    <input type="email" id="gmaildangnhap" placeholder="Gmail" required>
+                </div>
+
+                <div class="o-nhap">
+                    <i class='bx bx-lock-alt'></i>
+                    <input type="password" id="matkhaudangnhap" placeholder="Mật khẩu" required>
+                </div>
+
+                <button class="nut-chinh" type="submit">Đăng nhập</button>
+            </form>
+
+            <form id="formdangky" class="form-tai-khoan an">
+                <div class="o-nhap">
+                    <i class='bx bx-user'></i>
+                    <input type="text" id="hoten" placeholder="Họ tên" required>
+                </div>
+
+                <div class="o-nhap">
+                    <i class='bx bx-envelope'></i>
+                    <input type="email" id="gmaildangky" placeholder="Gmail" required>
+                </div>
+
+                <div class="o-nhap">
+                    <i class='bx bx-phone'></i>
+                    <input type="text" id="sodienthoai" placeholder="Số điện thoại" required>
+                </div>
+
+                <div class="o-nhap">
+                    <i class='bx bx-lock-alt'></i>
+                    <input type="password" id="matkhaudangky" placeholder="Mật khẩu" required>
+                </div>
+
+                <div class="o-nhap">
+                    <i class='bx bx-check-shield'></i>
+                    <input type="password" id="xacnhanmatkhau" placeholder="Xác nhận mật khẩu" required>
+                </div>
+
+                <div class="o-nhap o-ly-do">
+                    <textarea id="lydodangky" placeholder="Lý do đăng ký tài khoản" required></textarea>
+                </div>
+
+                <button class="nut-chinh" type="submit">Đăng ký tài khoản</button>
+            </form>
+
+            <div id="thongbaodangnhap" class="thong-bao-form"></div>
+        </div>
+    </div>
+
+    <!-- GIAO DIỆN CHÍNH -->
+    <div id="giaodienchinh" class="khung-ung-dung">
+
+        <aside class="sidebar glass-panel" id="sidebar">
+            <div class="sidebar-logo">
+                <img src="img/logo.png" alt="logo hcmute">
+                <div class="brand-text">
+                    <span class="brand-title">RoomGuard</span>
+                    <span class="brand-subtitle">Giám Sát Thông Minh</span>
+                </div>
+                <i class='bx bx-x menu-close-btn' id="dongsidebar"></i>
+            </div>
+
+            <ul class="nav-links">
+                <li class="active" data-target="trangtq">
+                    <i class='bx bx-grid-alt'></i>
+                    <span>Tổng Quan</span>
+                </li>
+                <li data-target="trangthongke">
+                    <i class='bx bx-bar-chart-alt-2'></i>
+                    <span>Thống Kê</span>
+                </li>
+                <li data-target="tranglichsu">
+                    <i class='bx bx-history'></i>
+                    <span>Lịch Sử</span>
+                </li>
+                <li data-target="trangchatbot">
+                    <i class='bx bx-bot'></i>
+                    <span>Chatbot</span>
+                </li>
+                <li data-target="trangcaidat">
+                    <i class='bx bx-cog'></i>
+                    <span>Cài Đặt</span>
+                </li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="avatar"><i class='bx bx-user-circle'></i></div>
+                    <div class="user-detail">
+                        <h4 id="tenhienthi">Người dùng</h4>
+                        <p class="status-online"><span class="dot"></span> Online</p>
+                    </div>
+                </div>
+                <button id="nutdangxuat" class="btn btn-icon" title="Đăng xuất"><i class='bx bx-log-out'></i></button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <nav class="navbar glass-panel">
+                <div class="nav-left">
+                    <i class='bx bx-menu menu-btn' id="mosidebar"></i>
+                    <h2 id="tieudetrang">Tổng Quan</h2>
+                </div>
+                <div class="nav-right">
+                    <div class="connection-status" id="trangthaiketnoi">
+                        <span class="dot pulse"></span> <span class="text">Đang kết nối...</span>
+                    </div>
+                    <div class="time-display" id="dongho">00:00:00</div>
+                    <button id="nutdoigiaoDien" class="btn btn-icon" type="button"><i class='bx bx-sun'></i></button>
+                    <div class="notification">
+                        <i class='bx bx-bell'></i>
+                        <span class="badge" id="soluongcanhbao">0</span>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="pages-container">
+
+                <!-- TỔNG QUAN -->
+                <section id="trangtq" class="page active">
+                    <div class="status-banner warning" id="trangthaihethong">
+                        <i class='bx bx-loader-alt bx-spin'></i> ĐANG TẢI DỮ LIỆU...
+                    </div>
+
+                    <div class="metrics-grid">
+                        <div class="metric-card glass-panel temp-theme" id="cardnhietdo">
+                            <div class="card-icon"><i class='bx bxs-thermometer'></i></div>
+                            <div class="card-info">
+                                <p class="card-label">Nhiệt độ</p>
+                                <div class="card-val-container">
+                                    <h3 class="value" id="giatrinhietdo">--</h3>
+                                    <span class="unit">°C</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="metric-card glass-panel hum-theme" id="carddoam">
+                            <div class="card-icon"><i class='bx bx-water'></i></div>
+                            <div class="card-info">
+                                <p class="card-label">Độ ẩm</p>
+                                <div class="card-val-container">
+                                    <h3 class="value" id="giatridoam">--</h3>
+                                    <span class="unit">%</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="metric-card glass-panel lux-theme" id="cardanhsang">
+                            <div class="card-icon"><i class='bx bxs-bulb'></i></div>
+                            <div class="card-info">
+                                <p class="card-label">Ánh sáng</p>
+                                <div class="card-val-container">
+                                    <h3 class="value" id="giatrianhsang">--</h3>
+                                    <span class="unit">Lux</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="metric-card glass-panel mode-theme clickable" id="cardchedo">
+                            <div class="card-icon"><i class='bx bx-slider-alt'></i></div>
+                            <div class="card-info">
+                                <p class="card-label">Chế độ</p>
+                                <div class="card-val-container">
+                                    <h3 class="value chedo-text" id="giatrichedo">--</h3>
+                                </div>
+                                <small>Admin nhấn để đổi chế độ</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="overview-charts-grid mt-4">
+                        <div class="chart-card glass-panel">
+                            <div class="chart-header"><h3>Xu hướng Nhiệt độ</h3></div>
+                            <div class="chart-container-sm"><canvas id="bieudonhietdo"></canvas></div>
+                        </div>
+
+                        <div class="chart-card glass-panel">
+                            <div class="chart-header"><h3>Xu hướng Độ ẩm</h3></div>
+                            <div class="chart-container-sm"><canvas id="bieudodoam"></canvas></div>
+                        </div>
+
+                        <div class="chart-card glass-panel">
+                            <div class="chart-header"><h3>Xu hướng Ánh sáng</h3></div>
+                            <div class="chart-container-sm"><canvas id="bieudoanhsang"></canvas></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- THỐNG KÊ -->
+                <section id="trangthongke" class="page">
+                    <div class="stat-box glass-panel">
+                        <div class="section-header stat-header">
+                            <div>
+                                <h3>Phân tích dữ liệu</h3>
+                                <p>Dữ liệu cảm biến theo thời gian</p>
+                            </div>
+                            <div class="stat-controls">
+                                <div class="chart-actions">
+                                    <button class="btn btn-sm active" data-mode="realtime">Realtime</button>
+                                    <button class="btn btn-sm" data-mode="ngay">Theo ngày</button>
+                                    <button class="btn btn-sm" data-mode="thang">Theo tháng</button>
+                                </div>
+                                <div class="date-pickers" id="khungchonngay" style="display: none;">
+                                    <input type="date" id="chonngay" class="form-control stat-input">
+                                    <input type="month" id="chonthang" class="form-control stat-input" style="display: none;">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="chart-container-lg mt-3"><canvas id="bieudothongke"></canvas></div>
+
+                        <div class="stat-summary-grid mt-4">
+                            <div class="stat-summary-card">
+                                <h4>Nhiệt độ TB</h4>
+                                <div class="stat-val" id="tbnhietdo">-- <small>°C</small></div>
+                            </div>
+                            <div class="stat-summary-card">
+                                <h4>Độ ẩm TB</h4>
+                                <div class="stat-val" id="tbdoam">-- <small>%</small></div>
+                            </div>
+                            <div class="stat-summary-card">
+                                <h4>Ánh sáng TB</h4>
+                                <div class="stat-val" id="tbanhsang">-- <small>Lux</small></div>
+                            </div>
+                            <div class="stat-summary-card">
+                                <h4>Bản ghi</h4>
+                                <div class="stat-val" id="sobanghi">--</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- LỊCH SỬ -->
+                <section id="tranglichsu" class="page">
+                    <div class="history-box glass-panel">
+                        <div class="section-header">
+                            <h3>Lịch sử Cảnh báo & Hoạt động</h3>
+                            <div class="history-filters">
+                                <input type="date" id="locngaylichsu" class="form-control" title="Chọn ngày">
+                                <div id="locchedolichsu" class="mode-tabs">
+                                    <button class="btn-tab active" data-mode="all">TẤT CẢ</button>
+                                    <button class="btn-tab" data-mode="hoc_tap">HỌC TẬP</button>
+                                    <button class="btn-tab" data-mode="nghi_ngoi">NGHỈ NGƠI</button>
+                                </div>
+                                <select id="loctrangthailichsu" class="form-control">
+                                    <option value="all">Tất cả Trạng thái</option>
+                                    <option value="normal">Bình thường</option>
+                                    <option value="warning">Cảnh báo</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div id="danhsachlichsu" class="history-list mt-3">
+                            <div class="empty-state">
+                                <i class='bx bx-folder-open'></i>
+                                <p>Đang tải dữ liệu lịch sử...</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- CHATBOT -->
+                <section id="trangchatbot" class="page">
+                    <div class="chat-wrapper glass-panel">
+                        <div class="chat-header">
+                            <div class="chat-avatar"><i class='bx bx-bot'></i></div>
+                            <div class="chat-title">
+                                <h3>RoomGuard AI Assistant</h3>
+                                <p>Sẵn sàng giải đáp tình trạng phòng</p>
+                            </div>
+                        </div>
+                        <div class="chat-messages" id="khungchat">
+                            <div class="message bot-msg">
+                                <div class="msg-bubble">Xin chào! Mình là trợ lí RoomGuard. Bạn cần hỏi gì về nhiệt độ, độ ẩm, ánh sáng hoặc chế độ phòng?</div>
+                            </div>
+                        </div>
+                        <div class="chat-input-area">
+                            <input type="text" id="noidungchat" placeholder="Nhập câu hỏi (VD: Nhiệt độ thế nào?)..." autocomplete="off">
+                            <button id="nutguichat" class="btn btn-primary btn-icon"><i class='bx bx-send'></i></button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- CÀI ĐẶT -->
+                <section id="trangcaidat" class="page">
+                    <div class="settings-grid">
+                        <div class="settings-card glass-panel">
+                            <h3>Tài khoản</h3>
+                            <div class="form-group mt-3">
+                                <label>Tên hiển thị</label>
+                                <input type="text" class="form-control" id="tennguoidung" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label>Gmail</label>
+                                <input type="email" class="form-control" id="gmailnguoidung" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label>Vai trò</label>
+                                <input type="text" class="form-control" id="vaitrohienthi" disabled>
+                            </div>
+                        </div>
+
+                        <div class="settings-card glass-panel">
+                            <h3>Hệ thống</h3>
+                            <div class="setting-item mt-3">
+                                <div>
+                                    <h4>Giao diện Tối</h4>
+                                    <p>Chuyển đổi giao diện Dark/Light</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="nutchedoitoi" checked>
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <div>
+                                    <h4>Thông báo Push</h4>
+                                    <p>Hiển thị cảnh báo khi vượt ngưỡng</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="settings-card glass-panel">
+                            <h3>Cài đặt ngưỡng</h3>
+                            <p class="chu-mo">Chỉ tài khoản admin mới được thay đổi ngưỡng và chế độ.</p>
+
+                            <div class="form-group mt-3">
+                                <label>Ngưỡng nhiệt độ</label>
+                                <input type="number" class="form-control" id="nguongnhietdo" value="30">
+                            </div>
+                            <div class="form-group">
+                                <label>Ngưỡng độ ẩm</label>
+                                <input type="number" class="form-control" id="nguongdoam" value="65">
+                            </div>
+                            <div class="form-group">
+                                <label>Ngưỡng ánh sáng học tập thấp nhất</label>
+                                <input type="number" class="form-control" id="nguonganhsanghoctap" value="300">
+                            </div>
+                            <div class="form-group">
+                                <label>Ngưỡng ánh sáng nghỉ ngơi cao nhất</label>
+                                <input type="number" class="form-control" id="nguonganhsangnghingoi" value="250">
+                            </div>
+                            <div class="form-group">
+                                <label>Chế độ hoạt động</label>
+                                <select class="form-control" id="chedohethong">
+                                    <option value="hoc_tap">Học tập</option>
+                                    <option value="nghi_ngoi">Nghỉ ngơi</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-primary mt-3" id="nutluucaidat">Lưu cài đặt</button>
+                        </div>
+
+                        <div class="settings-card glass-panel">
+                            <h3>Nâng cấp tài khoản</h3>
+                            <p class="chu-mo">User có thể gửi yêu cầu nâng cấp lên admin. Sau khi admin duyệt, hệ thống gửi OTP về Gmail của user.</p>
+                            <div id="khungnangcap" class="khung-nang-cap mt-3"></div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
